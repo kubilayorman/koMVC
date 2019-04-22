@@ -1,0 +1,43 @@
+.container {
+    max-width: 120rem;
+    margin: 5rem auto;
+}
+
+.header {
+    height: auto;
+    background-color: white;
+    //position: fixed;
+    //width: 120rem;
+    //z-index: 100;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main {
+    padding: 0rem;
+}
+
+.content {
+    margin-top: 2rem;
+    padding: 0rem;
+   
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+}
+
+.footer {
+    margin-top: 2rem;
+    min-height: auto;
+    background-color: white;
+
+    border-top: .1rem solid rgba($color: #000000, $alpha: .5);
+    border-bottom: .1rem solid rgba($color: #000000, $alpha: .5);
+}
+
+.bold-span {
+    font-weight: 700;
+}

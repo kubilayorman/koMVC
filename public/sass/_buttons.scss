@@ -1,0 +1,61 @@
+////////////////////
+// A - Element buttons
+
+.A-element {
+
+    &__submit {
+        margin-right: auto;
+        position: relative;
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: black;
+        padding: .5rem 0;
+        display: inline-block;
+        transition: all .2s;
+        font-family: 'Oxygen', sans-serif;
+        
+        @include beforeafter-A;
+   }
+}
+
+
+////////////////////
+// Buttons - Element buttons
+
+.B-element {
+
+    &__submit {
+        position: relative;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: black;
+        padding: .5rem 0;
+        transition: all .2s;
+        border: none;
+        text-decoration: none;
+        background-color: transparent;
+        backface-visibility: hidden;
+        font-family: 'Oxygen', sans-serif;
+
+        @include beforeafter-B;
+    }
+}
+
+////////////////////
+// A - Element Admin buttons
+
+.A-element {
+
+    &__admin {
+        margin-right: auto;
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: black;
+        padding: 1rem;
+        display: inline-block;
+        transition: all .2s;
+        font-family: 'Oxygen', sans-serif;
+   }
+}
