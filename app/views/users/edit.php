@@ -3,11 +3,6 @@
 
 <div class="container">
 
-<?php 
-
-// var_dump($_SERVER['edit_error']);
-
-?>
 
 <p class="content-top__head--headtitle"><?php // echo $requested_page_title; ?></p>
 
@@ -58,10 +53,10 @@
 
 <?php
 
-if(isset($_SESSION['edit_error'])) {
+    if(isset($_SESSION['edit_error_user'])) {
 
-    unset($_SESSION['edit_error']);
-}
+        unset($_SESSION['edit_error_user']);
+    }
 
 ?>
 

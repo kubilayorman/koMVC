@@ -5,7 +5,7 @@
         <ul class="admin-navbar__menu--list">
 
             <li class="admin-navbar__menu--item">
-                <a class="admin-navbar__menu--link A-element__admin" href="?adminpage=admin_dashboard">Admin Page</a>
+                <a class="admin-navbar__menu--link A-element__admin" href="<?php echo URLROOT; ?>/admin/index">Admin Page</a>
             </li>
 
             <li class="admin-navbar__menu--item admin-navbar__dropdown">

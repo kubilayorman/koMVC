@@ -23,6 +23,12 @@
             </div>
 
             <div class="form__newinsight--container">
+                <p class="form__newinsight--headtitle">Sub Title:</p>
+                <input type="text" class="form__newinsight--title" name="sub_title" autocomplete="off" value="<?php echo $data['sub_title']; ?>">
+                <?php echo "<p style='color:red;'>" . $data['sub_title_err'] . "</p>"; ?>
+            </div>
+
+            <div class="form__newinsight--container">
                 <p class="form__newinsight--headtitle">Body:</p>
                 <textarea class="contact-container__messagebox" name="body" id="" cols="30" rows="10"><?php echo $data['body']; ?></textarea>
                 <?php echo "<p style='color:red;'>" . $data['body_err'] . "</p>"; ?>

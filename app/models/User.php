@@ -66,8 +66,6 @@ class User {
 
     public function updateUser($data) {
 
-
-        //$this->db->query("insert into users (name, email, password) values(:name, :email, :password)");
         $this->db->query("UPDATE users SET name=:name, email=:email, password=:password WHERE id=:id");
         // Bind values
         $this->db->bind(':name', $data['name']);

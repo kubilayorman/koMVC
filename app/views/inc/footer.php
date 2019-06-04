@@ -18,6 +18,8 @@
 </div> <!-- end of site container class -->
 
 <script src="<?php echo URLROOT; ?>/js/main.js"></script>
+<script src="<?php echo URLROOT; ?>/js/navbar.js"></script>
+
 
 </body>
 </html>

@@ -71,12 +71,153 @@ class Pages extends Controller {
 
     }
 
-    public function contact() {
-
-        $data = [
-            "maps" => "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6017.760475181866!2d28.996427119573962!3d41.049748025526384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab70977e134e9%3A0x3c6d2b5bf299e3de!2zVGXFn3Zpa2l5ZSwgQXYuIFPDvHJleXlhIEHEn2FvxJ9sdSBTay4gTm86MjYsIDM0MzY1IMWeacWfbGkvxLBzdGFuYnVs!5e0!3m2!1ssv!2str!4v1547665397105\" frameborder=\"0\" style=\"border:0\" allowfullscreen class=\"contact-container__maps",
+    public function contact() { 
             
-        ];
+    
+        //Check if contact form is submitted
+        if(isset($_POST['submit'])) {
+
+            /** 
+             * If submitted sanitize input
+             *  
+            */
+            $inputArray = [
+
+                'name'    => $_POST['name'],
+                'mail'    => $_POST['mail'],
+                'phone'   => $_POST['phone'],
+                'message' => $_POST['message']
+
+            ];
+
+            // Sanitize for these values
+            $sanitizeInput  = ["\\", "<", ">", "/", "&", "%"];
+
+
+            // Sanitize loop
+            foreach ($inputArray as $index => $inputValue) {
+            
+                foreach ($sanitizeInput as $sanitizeValue) {
+
+                    $loopResult = implode("",explode($sanitizeValue, $inputValue));
+                    
+                    $inputValue = $loopResult; 
+                    
+                }
+
+                // Put sanitized input data back into the input array
+                $inputArray[$index] = htmlspecialchars(trim($inputValue));
+            }
+
+            // Data array to be sent to the view
+            $data = [
+                'maps'          => "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6017.760475181866!2d28.996427119573962!3d41.049748025526384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab70977e134e9%3A0x3c6d2b5bf299e3de!2zVGXFn3Zpa2l5ZSwgQXYuIFPDvHJleXlhIEHEn2FvxJ9sdSBTay4gTm86MjYsIDM0MzY1IMWeacWfbGkvxLBzdGFuYnVs!5e0!3m2!1ssv!2str!4v1547665397105\" frameborder=\"0\" style=\"border:0\" allowfullscreen class=\"contact-container__maps",
+                'name'          => '',
+                'mail'          => '',
+                'phone'         => '',
+                'message'       => ''
+                
+            ];
+
+            /**
+             * 
+             * Check for regular expression match
+             * 
+             */
+
+            if(!preg_match("/^[a-zA-Z ']+$/",$inputArray['name'] )) {
+
+                // Append an error into data array if the sanitized input does not match the regular expression
+                $data['nameError'] = 'Invalid name, please try again.';
+
+            } else {
+                // Set vaiue of data array key if the sanitized input does match the regular expression
+                $data['name'] = $inputArray['name'];
+            }
+
+
+            if(!preg_match("/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z.]{3,6}$/",$inputArray['mail'] )) {
+
+                $data['mailError'] = 'Invalid mail, please try again.';
+            
+            } else {
+
+                $data['mail'] = $inputArray['mail'];
+            }
+
+            if(!preg_match("/^[0-9 -]/",$inputArray['phone'] )) {
+
+                $data['phoneError'] = 'Invalid phone number, please try again.';
+            
+            } else {
+
+                $data['phone'] = $inputArray['phone'];
+            }
+
+            if(strlen($inputArray['message']) === 0) {
+
+                $data['messageError'] = 'Your message should not be empty';
+
+            } else {
+
+                $data['message'] = $inputArray['message'];
+            }
+
+            /** 
+             * 
+             * Send the mail if there are no errors appended to the data array
+             * 
+             * */ 
+            if(empty($data['nameError']) && empty($data['mailError']) && empty($data['phoneError']) && empty($data['messageError'])) {
+
+                // Recipient mail
+                $to     = 'support@kubilayorman.com';
+                // Mail subject
+                $subjet = 'Contact request from ' . $data['name'];
+                // Mail body
+                $body   = '<h2>Contact Request </h2>
+                           <h4>Name: </h4><p>'      . $data['name'] . '</p>
+                           <h4>Mail: </h4><p>'      . $data['mail'] . '</p>
+                           <h4>Phone: </h4><p>'     . $data['phone'] . '</p>
+                           <h4>Message: </h4><p>'   . $data['message'] . '</p> 
+                            ';
+                
+                // Mail headers
+                $headers  = 'MIME-Version: 1.0' . '\r\n';
+                $headers .= 'Content-Type:text/html;charset=UTF-8' . '\r\n';
+
+                // Additional Headers
+                $headers .= 'From: ' . $data['name'] . '<' . $data['mail'] . '>' . '\r\n';
+
+                if(mail($to, $subjet, $body, $headers)) {
+
+                    echo "<h1>Email is sent";
+                } else {
+                    echo "<h1>Email is NOT sent";
+                }
+
+            }
+
+            /**
+             * Send empty data array if the submit button has not been pressed
+             * I.e. when you initially visit the contact page this is sent to the view
+             * 
+             */
+        } else {
+
+            $data = [
+                'maps'          => "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6017.760475181866!2d28.996427119573962!3d41.049748025526384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab70977e134e9%3A0x3c6d2b5bf299e3de!2zVGXFn3Zpa2l5ZSwgQXYuIFPDvHJleXlhIEHEn2FvxJ9sdSBTay4gTm86MjYsIDM0MzY1IMWeacWfbGkvxLBzdGFuYnVs!5e0!3m2!1ssv!2str!4v1547665397105\" frameborder=\"0\" style=\"border:0\" allowfullscreen class=\"contact-container__maps",
+                'name'          => '',
+                'mail'          => '',
+                'phone'         => '',
+                'message'       => '',
+                'nameError'     => '',
+                'mailError'     => '',
+                'phoneError'    => '',
+                'messageError'  => '',
+                'YouHaveErrors' => ''
+            ];
+        }
 
         $this->view("pages/contact", $data);
 

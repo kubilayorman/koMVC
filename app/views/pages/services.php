@@ -5,10 +5,11 @@
 
     <div class="content">
 
-        <div class="content-background">
+        <div class="content-background" id="content-background">
             <div class="content-top">
                 <div class="content-top__head">
-                    <p class="content-top__head--headtitle">I'm a business & web developer.</p>  
+                    <p class="content-top__head--headtitle">I'm a business & web developer.</p>
+                    <p class="content-top__head--subtitle">&nbsp;</p>  
                 </div>
             </div>
 

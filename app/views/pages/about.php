@@ -7,7 +7,7 @@
 
     <?php flashMessage("user_deleted"); session_destroy(); ?>
     
-        <div class="content-background">
+        <div class="content-background" id="content-background">
             <div class="content-top">
                 <div class="content-top__head">
                     <p class="content-top__head--headtitle"><?php echo $data['headtitle']; ?></p>

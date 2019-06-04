@@ -3,13 +3,17 @@
 
 <div class="container">
 
-    <?php flashMessage("add_insight_success"); ?>
-    <?php flashMessage("add_insight_restricted"); ?>
-    <?php flashMessage("insight_deleted"); ?>
-    <?php flashMessage("insight_delete_notsuccessful"); ?>
-    
-    <?php flashMessage("insight_edit_notallowed"); ?>
-    <?php flashMessage("insight_update_notallowed"); ?>
+<?php 
+    flashMessage("add_insight_success");
+    flashMessage("add_insight_restricted"); 
+    flashMessage("insight_deleted"); 
+    flashMessage("insight_delete_notsuccessful"); 
+
+    flashMessage("update_insight_successful"); 
+    flashMessage("insight_edit_notsuccessful"); 
+    flashMessage("update_insight_by_id_notallowed"); 
+    flashMessage("update_insight_notallowed"); 
+?>
 
     
 
@@ -44,7 +48,7 @@
                         </td>
                         <td class="table__cell">
                         <?php if($insights->user_id == $_SESSION['user_id']) { ?>
-                            <form action="<?php echo URLROOT; ?>/insights/deletecase/<?php echo $insights->id; //echo $_SESSION["case_id_time"]; ?>" method="post">
+                            <form action="<?php echo URLROOT; ?>/insights/deleteinsight/<?php echo $insights->id; //echo $_SESSION["case_id_time"]; ?>" method="post">
                                 <button type="submit" class="table__menubtn" id="delete">
                                     <i class="feature-box__icon icon-basic-elaboration-todolist-remove"></i>
                                 </button>

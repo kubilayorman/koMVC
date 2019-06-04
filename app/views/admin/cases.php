@@ -3,14 +3,17 @@
 
 <div class="container">
 
-    <?php flashMessage("add_case_success"); ?>
-    <?php flashMessage("add_case_restricted"); ?>
-    <?php flashMessage("case_deleted"); ?>
-    <?php flashMessage("case_delete_notsuccessful"); ?>
-    
-    <?php flashMessage("case_edit_notallowed"); ?>
-    <?php flashMessage("case_update_notallowed"); ?>
+<?php 
+    flashMessage("add_case_success");
+    flashMessage("add_case_restricted"); 
+    flashMessage("case_deleted"); 
+    flashMessage("case_delete_notsuccessful"); 
 
+    flashMessage("update_case_successful"); 
+    flashMessage("case_edit_notsuccessful"); 
+    flashMessage("update_case_by_id_notallowed"); 
+    flashMessage("update_case_notallowed"); 
+?>
 
     <div class="content">
 
@@ -27,15 +30,7 @@
                     </tr>
                 </div>
 
-                <?php 
-                
-                //$case_array_counter = 0;
-                
-                foreach ($data['cases'] as $cases) { 
-                    
-                    // $_SESSION["case_id_time"] = $cases->id;
-
-                    ?>
+                <?php foreach ($data['cases'] as $cases) { ?>
                     <tr class="table__row table__row--data">
                         <td class="table__cell"><?php echo $cases->id; ?></td>
                         <td class="table__cell"><?php echo $cases->user_id; ?></td>
@@ -56,10 +51,7 @@
                                     <i class="feature-box__icon icon-basic-elaboration-todolist-remove"></i>
                                 </button>
                             </form>
-                        <?php } 
-                        //var_dump($_SESSION["case_id_time"]);
-                        //$case_array_counter = $case_array_counter + 1;
-                        ?>
+                        <?php } ?>
                         </td>
                     </tr>
                 <?php } ?>

@@ -4,6 +4,7 @@
 <div class="container">
 
     <?php flashMessage("register_success"); ?>
+    <?php flashMessage("update_success"); ?>
     <?php flashMessage("delete_notsuccessful"); ?>
     <?php flashMessage("edit_notallowed"); ?>
     <?php flashMessage("update_notallowed"); ?>

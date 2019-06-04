@@ -5,7 +5,7 @@
 
     <div class="content">
 
-        <div class="content-background">
+        <div class="content-background" id="content-background">
             <div class="content-top__head">
                 <p class="content-top__head--headtitle"><?php echo $data['header']; ?></p>
                 <p class="content-top__head--subtitle"><?php echo $data['subHeader']; ?><a href="<?php echo URLROOT ?>/pages/contact" class="A-element__submit"><?php echo $data['link']; ?></a></p>

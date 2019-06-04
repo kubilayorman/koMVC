@@ -287,10 +287,7 @@ class Users extends Controller {
                         }
                     } else {
 
-                        //var_dump($data);
-                        //die;
-                        //$this->view('users/testreroute', $data);
-                        $_SESSION['edit_error'] = $data;
+                        $_SESSION['edit_error_user'] = $data;
                         redirect('users/redirectUpdateUser');
                     }
                 }
@@ -324,12 +321,9 @@ class Users extends Controller {
 
         } elseif ($id == $_SESSION['user_id']) {
 
-            if(isset($_SESSION['edit_error'])) {
-
-                //
-                //var_dump($_SESSION['edit_error']);
-                //die;
-                $this->view('users/edit', $_SESSION['edit_error']);
+            if(isset($_SESSION['edit_error_user'])) {
+      
+                $this->view('users/edit', $_SESSION['edit_error_user']);
 
             } else {
 

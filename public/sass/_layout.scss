@@ -1,22 +1,48 @@
 .container {
     max-width: 120rem;
     margin: 5rem auto;
+
+
+    @include respond(tab-land-1260) {
+        font-size: 56.25%; // 1 rem = 9px, 9/16 = 56.25%
+        max-width: 120rem;
+        margin: 5rem 3rem;
+    }
+
+    @include respond(tab-port) {
+        font-size: 56.25%; // 1 rem = 9px, 9/16 = 56.25%
+        max-width: 100rem;
+        margin: 5rem 3rem;
+    }
+}
+
+.wrapper--top {
+    padding-top: 2rem;
+    position: fixed;
+    z-index: 100;
+    background-color: white;
+    top: -0px;
+    border-bottom: 3px solid transparent;
+    transition: .4s;
 }
 
 .header {
     height: auto;
     background-color: white;
-    //position: fixed;
-    //width: 120rem;
-    //z-index: 100;
+    width: 120rem;
+    
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include respond(tab-port) {
+        flex-direction: column-reverse;
+    }
 }
 
 .main {
-    padding: 0rem;
+    margin-top: 19rem;
 }
 
 .content {

@@ -5,7 +5,7 @@
 
 <div class="content">
     
-        <div class="content-background">
+        <div class="content-background" id="content-background">
             <div class="content-top__head">
                 <p class="content-top__head--headtitle">This is where you login to this site.</p>
                 <p class="content-top__head--subtitle">If you have a username and password obviously ;)</p>
